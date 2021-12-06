@@ -13,5 +13,5 @@ step (revMask,mem) ln
     (addr,rest) = span isDigit $ drop 4 ln
     (a,v) = (read addr, read $ drop 4 rest)
 main = do
-  txt <- readFile "input14.txt"
+  txt <- readFile "in/14.txt"
   print $ sum $ M.elems $ snd $ foldl step (take 36 $ repeat 'X', M.empty) $ lines txt

@@ -18,7 +18,7 @@ try prog pc
   where
     inst = M.lookup pc prog
 main = do
-  txt <- readFile "input08.txt"
+  txt <- readFile "in/08.txt"
   let
     parsed = map (decode.words) $ lines txt
     prog = M.fromList $ zip [0..] (parsed ++ [('s',0)])

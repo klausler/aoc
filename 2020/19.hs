@@ -11,7 +11,7 @@ compile ruleMap s = (read $ init rnum, toFunc rest)
       where
         fns = map (chain . map ((ruleMap M.!).read)) $ chop (=="|") xs
 main = do
-  txt <- readFile "input19b.txt" -- use input19a.txt for part one
+  txt <- readFile "in/19b.txt" -- use input19a.txt for part one
   let
     (rules,("":cases)) = break null $ lines txt
     ruleMap = M.fromList $ map (compile ruleMap) rules

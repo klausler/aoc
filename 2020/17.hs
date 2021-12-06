@@ -15,7 +15,7 @@ step pts = filter isActive $ halo pts
     isActive p = ct == 3 || (ct == 2 && p `S.member` set)
       where ct = length $ filter (`S.member` set) $ neighbors p
 main = do
-  txt <- readFile "input17.txt"
+  txt <- readFile "in/17.txt"
   let
     start = [ (r,c,0,0) | (r,ln) <- zip [0..] $ lines txt,
               (c,ch) <- zip [0..] ln, ch == '#' ]

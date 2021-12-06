@@ -41,7 +41,7 @@ isMonster (x:y:z:_)
 isMonster _ = 0
 monsters xs = sum $ map isMonster $ tails xs
 main = do
-  txt <- readFile "input20.txt"
+  txt <- readFile "in/20.txt"
   let
     tiles = take 144 $ readTiles $ lines txt
     tileToSigSetMap = M.fromList [ (tn, S.fromList $ imgSigs img) | (tn,img) <- tiles ]

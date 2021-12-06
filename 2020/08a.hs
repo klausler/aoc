@@ -10,7 +10,7 @@ run prog pc acc
     next 'a' n = run' (pc+1) (acc+n)
     next 'j' n = run' (pc+n) acc
 main = do
-  txt <- readFile "input08.txt"
+  txt <- readFile "in/08.txt"
   let
     prog = M.fromList $ zip [0..] (map (decode.words) $ lines txt)
   print $ run prog 0 0

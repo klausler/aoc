@@ -1,7 +1,7 @@
 import Data.Function(on)
 import Data.List(minimumBy)
 main = do
-  txt <- readFile "input13.txt"
+  txt <- readFile "in/13.txt"
   let
     [l1,l2] = lines txt
     now = read l1

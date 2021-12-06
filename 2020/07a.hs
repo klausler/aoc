@@ -16,7 +16,7 @@ search hits rest
     (more, rest') = M.partition f rest
     f = any (isJust . (`M.lookup` hits) . snd)
 main = do
-  txt <- readFile "input07.txt"
+  txt <- readFile "in/07.txt"
   let
     db = M.fromList $ map parseRec $ lines txt
     f = any ((=="shiny gold") . snd)

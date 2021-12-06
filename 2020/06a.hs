@@ -8,4 +8,4 @@ distinct (x:xs)
   | otherwise = x:distinct xs
 distinct [] = []
 
-main = fmap (sum . map (length.distinct) . lines . group)  (readFile "input06.txt") >>= print
+main = fmap (sum . map (length.distinct) . lines . group)  (readFile "in/06.txt") >>= print

@@ -7,4 +7,4 @@ evalS' n ('+':s) = let (n',s') = opd s in evalS' (n+n') s'
 evalS' n s = (n,s)
 opd ('(':rest) = let (n,')':rest') = eval rest in (n, rest')
 opd n = let (digs,rest) = span isDigit n in (read digs,rest)
-main = readFile "input18.txt" >>= print . sum . map (fst . eval . filter (/=' ')) . lines
+main = readFile "in/18.txt" >>= print . sum . map (fst . eval . filter (/=' ')) . lines

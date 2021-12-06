@@ -27,7 +27,7 @@ step (e,n,'N') "R270" = (e,n,'W')
 step (e,n,'W') "R270" = (e,n,'S')
 step (e,n,'S') "R270" = (e,n,'E')
 main = do
-  txt <- readFile "input12.txt"
+  txt <- readFile "in/12.txt"
   let (e,n,_) = foldl step (0,0,'E') $ lines txt
   print (e,n,abs(e)+abs(n))
 

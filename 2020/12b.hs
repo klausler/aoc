@@ -11,6 +11,6 @@ step (s,(we,wn)) "R90" = (s,(wn,-we))
 step (s,(we,wn)) "R180" = (s,(-we,-wn))
 step (s,(we,wn)) "R270" = (s,(-wn,we))
 main = do
-  txt <- readFile "input12.txt"
+  txt <- readFile "in/12.txt"
   let ((e,n),_) = foldl step ((0,0),(10,1)) $ lines txt
   print (e,n,abs(e)+abs(n))

@@ -18,7 +18,7 @@ solve done rest = solve ((tag,n):done) rest'''
     (((tag,[n]):rest'), rest'') = partition ((==1).length.snd) rest
     rest''' = [ (tag,ns \\ [n]) | (tag,ns) <- rest' ++ rest'' ]
 main = do
-  txt <- readFile "input16.txt"
+  txt <- readFile "in/16.txt"
   let
     (rules,"":"your ticket:":my:"":"nearby tickets:":nearby) = span (not.null) $ lines txt
     (allVals@(myVals:nearbyVals)) = vals my : map vals nearby

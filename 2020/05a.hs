@@ -7,4 +7,4 @@ codeVal xs  = cv 0 xs
     val 'R' = 1
     val _ = 0
 doit = foldr1 max . map codeVal . lines
-main = doit <$> readFile "input05.txt" >>= print
+main = doit <$> readFile "in/05.txt" >>= print

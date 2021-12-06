@@ -1,7 +1,7 @@
 import Control.Applicative((<$>))
 import Data.List(sort)
 
-filename = "input01.txt"
+filename = "in/01.txt"
 goal = 2020
 
 fastPairs goal values = search sorted $ reverse sorted

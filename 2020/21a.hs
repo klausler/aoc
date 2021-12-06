@@ -10,7 +10,7 @@ f (ingredients, allergens) mIn = foldr g mIn allergens
     iSet = S.fromList ingredients
     g a m = M.insertWith S.intersection a iSet m
 main = do
-  txt <- readFile "input21.txt"
+  txt <- readFile "in/21.txt"
   let
     rules = map parse $ lines txt
     aMap = foldr f M.empty rules

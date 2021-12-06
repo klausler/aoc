@@ -6,7 +6,7 @@ contig 0 _ = [[]]
 contig _ [] = []
 contig n (x:xs) = if n < x then [] else map (x:) $ contig (n-x) xs
 main = do
-  txt <- readFile "input09.txt"
+  txt <- readFile "in/09.txt"
   let
     nums = map read $ lines txt
     target = uncurry search $ splitAt 25 nums

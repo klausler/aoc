@@ -1,5 +1,5 @@
 main = do
-  txt <- readFile "input03.txt"
+  txt <- readFile "in/03.txt"
   let
     lns = lines txt
     rows = length lns

@@ -4,7 +4,7 @@ f [] (n:_) = n
 f (1:xs) (_:ns) = f xs ns
 f (3:xs) (n:_) = n * f xs fib3List
 main = do
-  txt <- readFile "input10.txt"
+  txt <- readFile "in/10.txt"
   let
     sorted = sort $ map read $ lines txt
     diffs = zipWith (-) (sorted ++ [last sorted + 3]) (0:sorted)

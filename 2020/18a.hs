@@ -6,4 +6,4 @@ evalMore x "" = (x,"")
 evalMore x (')':rest) = (x,rest)
 evalMore x ('+':rest) = let (y, rest') = opd rest in evalMore (x+y) rest'
 evalMore x ('*':rest) = let (y, rest') = opd rest in evalMore (x*y) rest'
-main = readFile "input18.txt" >>= print . sum . map (fst . eval . filter (/=' ')) . lines
+main = readFile "in/18.txt" >>= print . sum . map (fst . eval . filter (/=' ')) . lines

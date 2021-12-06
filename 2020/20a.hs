@@ -5,7 +5,7 @@ readTiles lns = ((read $ init $ drop 5 l1) :: Int, take 10 img) : readTiles lns'
     (l1:img,lns') = splitAt 12 lns
 imgSig img = map ($ img) [ head, last, map head, map last ]
 main = do
-  txt <- readFile "input20.txt"
+  txt <- readFile "in/20.txt"
   let
     tiles = take 144 $ readTiles $ lines txt
     tileToSigSetMap = M.fromList [ (tn, S.fromList (sigs ++ map reverse sigs)) | (tn,img) <- tiles, let sigs = imgSig img ]

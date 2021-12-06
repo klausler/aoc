@@ -20,5 +20,5 @@ assess done rest = uncurry assess $ f rest
         (yes,no) = f rest
     g (ct, x) = fmap (ct *) $ M.lookup x done
 main = do
-  txt <- readFile "input07.txt"
+  txt <- readFile "in/07.txt"
   print $ fmap (subtract 1) $ M.lookup "shiny gold" $ assess M.empty $ map parseRec $ lines txt

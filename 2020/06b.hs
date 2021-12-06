@@ -7,4 +7,4 @@ groups = map words . lines . pp
     pp "" = ""
 common = S.elems . foldr1 S.intersection . map S.fromList
 doit = sum . map (length.common) . groups
-main = fmap doit (readFile "input06.txt") >>= print
+main = fmap doit (readFile "in/06.txt") >>= print

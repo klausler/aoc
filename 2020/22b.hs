@@ -13,7 +13,7 @@ play hist (p1@(p1c:p1s)) (p2@(p2c:p2s))
     p2round = next p1s (p2s ++ [p2c,p1c])
     recurse = fst $ play S.empty (take p1c p1s) (take p2c p2s)
 main = do
-  txt <- readFile "input22.txt"
+  txt <- readFile "in/22.txt"
   let
     ((_:x),("":_:y)) = break (=="") $ lines txt
   print $ sum $ zipWith (*) [1..] $ reverse $ snd $ play S.empty (map read x) (map read y)

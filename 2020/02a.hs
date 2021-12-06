@@ -6,7 +6,7 @@ check ln = hits >= read n1 && hits <= read n2
     (n2,' ':letter:':':' ':pw) = span isDigit r2
     hits = length $ filter (==letter) pw
 main = do
-  text <- readFile "input02.txt"
+  text <- readFile "in/02.txt"
   let ans = filter check $ lines $ text
   mapM_ putStrLn ans
   print $ length ans

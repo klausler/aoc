@@ -18,5 +18,5 @@ step set = S.fromList $ filter toBlack $ halo set
           where nB = length $ filter (`S.member` set) $ neighbors pt
 steps = 100 -- use 0 for part one, 100 for part two
 main = do
-  txt <- readFile "input24.txt"
+  txt <- readFile "in/24.txt"
   print $ S.size $ (iterate step $ foldr doTile S.empty $ lines txt) !! steps

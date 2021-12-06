@@ -11,7 +11,7 @@ rule r n = rf rng1 n || rf rng2 n
 vals = map read . words . map (\c -> if c == ',' then ' ' else c)
 noRule rs n = not $ or $ rs <*> [n]
 main = do
-  txt <- readFile "input16.txt"
+  txt <- readFile "in/16.txt"
   let
     (rules,"":"your ticket:":my:"":"nearby tickets:":nearby) = span (not.null) $ lines txt
     rs = map rule rules

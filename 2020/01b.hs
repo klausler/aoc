@@ -1,6 +1,6 @@
 import Data.List(sort)
 
-filename = "input01.txt"
+filename = "in/01.txt"
 goal = 2020
 
 triplets values = [ (z,y,x) | x <- s, y <- s, y <= x, z <- s, z <= y, x + y + z == goal ]

@@ -15,5 +15,5 @@ missing (x:xs@(y:_))
   | otherwise = undefined
 
 main = do
-  txt <- readFile "input05.txt"
+  txt <- readFile "in/05.txt"
   print $ missing $ sort $ map codeVal $ lines txt

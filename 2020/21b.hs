@@ -16,5 +16,5 @@ solve soFar aMap
     done = M.foldWithKey M.insert soFar new
     remove = M.foldr S.union S.empty new
 main = do
-  txt <- readFile "input21.txt"
+  txt <- readFile "in/21.txt"
   putStrLn $ intercalate "," $ map (head . S.toList . snd) $ M.assocs $ solve M.empty $ foldr f M.empty $ map parse $ lines txt

@@ -41,7 +41,7 @@ isValid rec = all isValidField fvs && all (`elem` fs) required
     isValidField (f,v) = (fromMaybe (const False) (lookup f fieldDefs)) v
 
 main = do
-  txt <- readFile "input04.txt"
+  txt <- readFile "in/04.txt"
   let
     recs = lines $ nlToSpace txt
     valid = filter isValid recs

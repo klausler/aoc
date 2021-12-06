@@ -1,7 +1,7 @@
 import Data.List(sort)
 count n = length . filter (==n)
 main = do
-  txt <- readFile "input10.txt"
+  txt <- readFile "in/10.txt"
   let
     nums = map read $ lines txt
     sorted = sort nums

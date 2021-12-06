@@ -11,7 +11,7 @@ seat m (s,c)
 iter m = M.fromList $ map (seat m) $ M.assocs m
 fixPoint f m = let m' = f m in if m == m' then m else fixPoint f m'
 main = do
-  txt <- readFile "input11.txt"
+  txt <- readFile "in/11.txt"
   let
     f (r,ln) = [ ((r,c),ch) | (c,ch) <- zip [0..] ln ]
     m = M.fromList $ f =<< (zip [0..] $ lines txt)
