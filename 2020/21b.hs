@@ -13,7 +13,7 @@ solve soFar aMap
   | otherwise = solve done $ M.map (S.\\ remove) rest
   where
     (new,rest) = M.partition ((==1) . S.size) aMap
-    done = M.foldWithKey M.insert soFar new
+    done = M.foldrWithKey M.insert soFar new
     remove = M.foldr S.union S.empty new
 main = do
   txt <- readFile "in/21.txt"

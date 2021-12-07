@@ -8,7 +8,7 @@ neighbors (x,y,z,w) = [ (x',y',z',w') | x' <- [x-1 .. x+1], y' <- [y-1 .. y+1], 
 halo pts = [ (x,y,z,w) | x <- expandedX, y <- expandedY, z <- expandedZ, w <- expandedW ]
   where
     expand f = let ns = map f pts in [minimum ns - 1 .. maximum ns + 1]
-    (expandedX, expandedY, expandedZ, expandedW) = (expand getX, expand getY, expand getZ, if puzzlePart == 2 then expand getW else [w])
+    (expandedX, expandedY, expandedZ, expandedW) = (expand getX, expand getY, expand getZ, if puzzlePart == 2 then expand getW else getW <$> pts)
 step pts = filter isActive $ halo pts
   where
     set = S.fromList pts
