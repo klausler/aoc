@@ -1,4 +1,3 @@
-import Data.List(sort)
 import qualified Data.Map as M
 pairs [_] = []
 pairs (a:(rest@(z:_))) = (a,z) : pairs rest
