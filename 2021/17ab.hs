@@ -10,6 +10,7 @@ fling xMin xMax yMin yMax x' y' x y
 main = do
   ln <- readFile "in/17.txt"
   let [xMin, xMax, yMin, yMax] = (read <$> (words $ toNum <$> ln)) :: [Int]
-      hits = [ fromJust p | x' <- [1 .. xMax], y' <- [yMin .. (-10)*yMin], let p = fling xMin xMax yMin yMax x' y' 0 0, isJust p ]
+      hits = [ fromJust p | x' <- [1 .. xMax], y' <- [yMin .. (-10)*yMin]
+                          , let p = fling xMin xMax yMin yMax x' y' 0 0, isJust p ]
   print $ maximum $ snd <$> concat hits -- part 1
   print $ length hits -- part 2
