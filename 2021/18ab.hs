@@ -19,9 +19,9 @@ dmag depth list@((d,n):rest)
   | otherwise = let (m1,r1) = dmag (depth+1) list
                     (m2,r2) = dmag (depth+1) r1 in (3*m1+2*m2, r2)
 mag = fst . dmag 0
-sumPairs [_] = []
-sumPairs (a:rest) = [ mag $ add a b | b <- rest ] ++ [ mag $ add b a | b <- rest ] ++ sumPairs rest
+sumPairs [] = []
+sumPairs (a:rest) = concat [ [ add a b, add b a ] | b <- rest ] ++ sumPairs rest
 main = do
   nums <- (transform 0 <$>) <$> lines <$> readFile "in/18.txt"
   print $ mag $ foldl1 add nums -- part 1
-  print $ maximum $ sumPairs nums -- part 2
+  print $ maximum $ mag <$> sumPairs nums -- part 2
