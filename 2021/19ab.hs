@@ -1,7 +1,6 @@
 import Data.List(groupBy)
 import qualified Data.Set as S
 grouper l1 l2 = null l1 == null l2
-rdLine :: String -> (Int,Int,Int)
 rdLine ln = read $ "((" ++ (concatMap (\c->if c == ',' then "),(" else [c]) ln) ++ "))"
 orientations = [ first . up
                | first <- [noop, \(x,y,z)->(y,-x,z), \(x,y,z)->(-x,-y,z), \(x,y,z)->(-y,x,z)
@@ -15,7 +14,6 @@ pairsWith set beacons
   where xforms = [ offset coord . o | (x,y,z) <- S.toList set, b <- beacons, o <- orientations
                                     , let (x',y',z') = o b, let coord = (x-x',y-y',z-z') ]
         hits = [ xf | xf <- xforms, length (filter (`S.member` set) (xf <$> beacons)) >= 12 ]
-extract :: (a -> Maybe b) -> [a] -> Maybe (a, b, [a])
 extract _ [] = Nothing
 extract f (x:xs)
   | Just y <- f x = Just (x, y, xs)
