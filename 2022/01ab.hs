@@ -1,9 +1,8 @@
 import Data.List(groupBy, sort)
-combine2 :: [[Int]] -> [[Int]]
-combine2 vals = filter (not . null) $ concat <$> groupBy (\x y -> null x == null y) vals
+gather = filter (not.null) . (concat <$>) . groupBy (\x y -> null x == null y)
+tally = sum . (read <$>) :: [String] -> Int
 main = do
-  input <- readFile "in/01.txt"
-  let combined = combine2 $ ((read <$>) . words) <$> lines input
-      descending = reverse $ sort $ sum <$> combined
+  input <- (words <$>) <$> lines <$> readFile "in/01.txt"
+  let descending = reverse $ sort $ tally <$> gather input
   print $ head descending -- part A
   print $ sum $ take 3 descending -- part B
