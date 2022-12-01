@@ -10,8 +10,8 @@ bite (a1,a2) (b1,b2)
   | b1 <= a1, b2 >= a2 = ([],[(a1,a2)])
   | b1 <= a1 = ([(b2+1,a2)],[(a1,b2)])
   | b2 >= a2 = ([(a1,b1-1)],[(b1,a2)])
-  | otherwise = ([(a1,b1-1),(b2+1,a2)],[(b1,b2)])
-rm c'@(xs',ys',zs') c@(xs,ys,zs) =
+  | b1 > a1, b2 < a2 = ([(a1,b1-1),(b2+1,a2)],[(b1,b2)])
+remove (xs',ys',zs') (xs,ys,zs) =
     [ (sx,ys,zs) | sx <- safeX ] ++
     [ (bx,sy,zs) | bx <- badX, sy <- safeY ] ++
     [ (bx,by,sz) | bx <- badX, by <- badY, sz <- safeZ ]
@@ -19,8 +19,8 @@ rm c'@(xs',ys',zs') c@(xs,ys,zs) =
     (safeX,badX) = bite xs xs'
     (safeY,badY) = bite ys ys'
     (safeZ,_) = bite zs zs'
-apply cubes ("off",cube) = concatMap (rm cube) cubes
-apply cubes ("on",cube) = cube : concatMap (rm cube) cubes
+apply cubes ("off",cube) = cubes >>= remove cube
+apply cubes ("on",cube) = cube : (cubes >>= remove cube)
 size ((x1,x2),(y1,y2),(z1,z2)) = (x2-x1+1)*(y2-y1+1)*(z2-z1+1)
 main = do
   lns <- lines <$> readFile "in/22.txt"
