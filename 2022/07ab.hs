@@ -19,4 +19,3 @@ main = do
       (smallSzSum, totalSz, sizes) = walk tree
   print smallSzSum -- part A
   print $ minimum $ filter (>=(30000000 - (70000000 - totalSz))) sizes -- partB
-
