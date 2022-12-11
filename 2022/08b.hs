@@ -14,4 +14,3 @@ main = do
                   view (drop y $ input' !! x) *
                   view (reverse $ take (y+1) $ input' !! x)
   print $ maximum [ score x y | x <- [0..(w-1)], y <- [0..(h-1)] ]
-
