@@ -6,11 +6,9 @@ magicY = 2000000
 overlap (x,y) d
   | w < 0 = S.empty
   | otherwise = S.fromList [(x-w)..(x+w)]
-  where dy = abs (y - magicY)
-        w = d - dy
+  where w = d - abs (y - magicY)
 main = do
   input <- ((parse <$>) . lines) <$> readFile "in/15.txt"
   let sensors = [ (sxy, manhattan sxy bxy) | (sxy,bxy) <- input ]
       badBeacons = S.fromList [ x | (_,(x,y)) <- input, y == magicY ]
   print $ S.size $ (S.unions $ (uncurry overlap) <$> sensors) S.\\ badBeacons
-
