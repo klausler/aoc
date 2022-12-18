@@ -29,4 +29,5 @@ main = do
       partB = vals !! 25
       allVs = foldl setBit 0 $ filter (>0) $ M.elems fl
   print $ score $ (vals !! 29) M.! ("AA", 0) -- part A
-  print $ maximum [ score (partB M.! ("AA",v)) + score (partB M.! ("AA", allVs `xor` v)) | v <- vs ] -- part B
+  print $ maximum [ score (partB M.! ("AA",v)) + score (partB M.! ("AA", v'))
+                  | v <- vs, let v' = allVs `xor` v, v < v' ] -- part B
