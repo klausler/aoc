@@ -1,11 +1,11 @@
 import Data.Array
-suffices [] = [[]]
-suffices (list@(_:rest)) = list : suffices rest
+suffixes [] = [[]]
+suffixes (list@(_:rest)) = list : suffixes rest
 solve codes sizes = dynamic ! (0,0)
   where
     dynamic = listArray ((0,0),(length codes, length sizes))
-      [ ways (j,k) cs ss | (j,cs) <- zip [0..] $ suffices codes
-                         , (k,ss) <- zip [0..] $ suffices sizes ]
+      [ ways (j,k) cs ss | (j,cs) <- zip [0..] $ suffixes codes
+                         , (k,ss) <- zip [0..] $ suffixes sizes ]
     ways _ "" [] = 1
     ways _ "" _ = 0
     ways (j,k) ('.':_) _ = dynamic ! (j+1,k)
