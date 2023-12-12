@@ -10,7 +10,7 @@ neighbors (r,c) 'L' = [(r,c+1), (r-1,c)]
 neighbors (r,c) 'S' = [(r-1,c), (r,c-1), (r+1,c), (r,c+1)]
 neighbors _ _ = []
 travel graph at last = at : travel graph (head $ filter (/=last) $ graph M.! at) at
--- A point is enclosed if every ray therefrom crosses the loop an odd number of times
+-- A point is enclosed if any ray therefrom crosses the loop an odd number of times
 lookEast m (r,c)
   | Just ch <- M.lookup (r,c) m = ch : lookEast m (r,c+1)
   | otherwise = ""
