@@ -15,11 +15,9 @@ boundaryPts [_] = 0
 boundaryPts ((x,y):(rest@((x',y'):_)))
   | x == x' = abs (y'-y) + boundaryPts rest
   | otherwise = abs (x'-x) + boundaryPts rest
-picksTheorem points = boundary + interior
-  where
-    area = (abs $ trapezoidAreaX2 points) `div` 2
-    boundary = boundaryPts points
-    interior = area + 1 - boundary `div` 2
+picksTheorem points = boundary + interior -- A = i + b/2 - 1 -> 2i = 2A - b + 2
+  where boundary = boundaryPts points
+        (interior,0) = ((abs $ trapezoidAreaX2 points) + 2 - boundary) `quotRem` 2
 main = do
   lns <- lines <$> readFile "in/18.txt" -- "t.in"
   let input = [ (dir, read n, init rest)

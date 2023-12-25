@@ -43,4 +43,4 @@ solveB ([apx,apy,apz,avx,avy,avz]:[bpx,bpy,bpz,bvx,bvy,bvz]:rest) =
 main = do
   lns <- fmap (map (map read . words) . lines . map cook) $ readFile "in/24.txt"
   print $ length $ pairs lns >>= uncurry solveA -- part A
-  print [ truncate $ rpx + rpy +  rpz | [rpx,rpy,rpz,_,_,_] <- solveB lns] -- part B
+  print [ truncate $ rpx + rpy + rpz | [rpx,rpy,rpz,_,_,_] <- solveB lns] -- part B
