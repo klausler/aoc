@@ -25,7 +25,6 @@ disableDonts "" = ""
 disableDonts (str@(ch:rest))
   | Just str' <- "don't()" `begins` str = disableDonts $ skipPastDo str'
   | otherwise = ch : (disableDonts $ tail str)
-part2 _ n "" = n
 main = do
   input <- readFile "in/03.txt"
   print $ process 0 input -- part 1
