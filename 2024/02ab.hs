@@ -1,6 +1,6 @@
 isSafe (report@(x:(rest@(y:_))))
-  | x >= y = all ok $ zipWith subtract rest report
-  | otherwise = all ok $ zipWith subtract report rest
+  | x >= y = all ok $ zipWith (-) report rest
+  | otherwise = all ok $ zipWith (-) rest report
   where ok diff = diff >= 1 && diff <= 3
 omissions [] = [[]]
 omissions (x:xs) = xs : ((x:) <$> omissions xs)
