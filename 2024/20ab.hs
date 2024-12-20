@@ -20,7 +20,6 @@ cheats maxd mind dists = sum
 main = do
   lns <- lines <$> readFile "in/20.txt"
   let space = S.fromList $ survey (/= '#') lns
-      ([start],[end]) = (survey (=='S') lns, survey (=='E') lns)
-      dists = flood space M.empty 0 [end]
+      dists = flood space M.empty 0 $ survey (=='E') lns
   print $ cheats 2 100 dists -- part 1
   print $ cheats 20 100 dists -- part 2
